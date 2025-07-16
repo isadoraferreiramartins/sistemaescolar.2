@@ -5,6 +5,26 @@ let cursos = [];
 // Arrays para armazenar os dados de alunos e cursos.
 
 let opcao;
+let senhaCorreta = "Senai1234";
+let tentativasSenha = 0;
+
+while (tentativasSenha < 3) {
+  let senhaDigitada = prompt("Digite a senha para acessar o sistema:");
+  if (senhaDigitada === senhaCorreta) {
+    console.log("Senha Correta! Acesso concedido.");
+    break;
+  } else {
+    tentativasSenha++;
+    console.log(
+      "Senha Incorreta. tentativas restantes" + (3 - tentativasSenha)
+    );
+  }
+}
+
+if (tentativasSenha === 3) {
+  console.log("Acesso não Autorizado. Você excedeu o número de tentativas");
+  Process.exit();
+}
 
 do {
   // Menu de Opções:
@@ -18,7 +38,7 @@ do {
       "7 - Sair\n\n" +
       "Escolha uma Opção\n"
   );
-
+      // Loop principal do sistema, só após a senha for validada.
   switch (opcao) {
     case "1":
       // Cadastro de novo Aluno:
@@ -147,6 +167,7 @@ do {
 
       console.log("Saindo do sistema...Oba! Você saiu do Sistema.");
       break;
+
     default:
       console.log("Opção invalida. Tente novamente.");
   }
